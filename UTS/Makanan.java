@@ -1,16 +1,28 @@
 class Makanan extends Menu {
+    private String type = "Makanan";
 
-    String type = "Makanan";
-
-    Makanan(String idMakanan, int inputJumlah, double outputHarga){
+    public Makanan(String idMakanan, int inputJumlah, double outputHarga) {
         super(idMakanan, inputJumlah, outputHarga);
     }
 
+    // Mengimplementasikan method abstract dari induk
     @Override
-    void display(){
-        super.display();
-        System.out.println("Type : " + this.type);
-        System.out.println("ID ini " + this.idMenu + " Dengan Jumlah " + this.menuJumlah + " dikenakan harga " + Harga);
+    public String getType() {
+        return this.type;
     }
-    
+
+    @Override
+    public double hitungSubtotal() {
+        // Rumus matematika subtotal: $subtotal = jumlah \times harga$
+        return getMenuJumlah() * getHarga();
+    }
+
+    @Override
+    public void display() {
+        super.display(); // Memanggil display() milik kelas Menu
+        System.out.println("Type   : " + this.type);
+        System.out.println("ID ini " + getIdMenu() + " Dengan Jumlah " + getMenuJumlah() + " dikenakan harga " + getHarga());
+        System.out.println("Subtotal: Rp " + hitungSubtotal());
+        System.out.println("----------------------------------------");
+    }
 }
