@@ -1,27 +1,15 @@
-class Minuman extends Menu {
-    private String type = "Minuman"; // Bugfix: Sebelumnya tertulis "Makanan"
+public class Minuman extends Menu {
+    private String type = "Minuman";
 
-    public Minuman(String idMinuman, int inputJumlah, double outputHarga) {
-        super(idMinuman, inputJumlah, outputHarga);
-    }
-
-    // Mengimplementasikan method abstract dari induk
-    @Override
-    public String getType() {
-        return this.type;
-    }
-
-    @Override
-    public double hitungSubtotal() {
-        return getMenuJumlah() * getHarga();
+    public Minuman(String idMinuman, String namaMinuman, double harga) {
+        super(idMinuman, namaMinuman, harga); 
     }
 
     @Override
     public void display() {
-        super.display(); // Memanggil display() milik kelas Menu
-        System.out.println("Type   : " + this.type);
-        System.out.println("ID ini " + getIdMenu() + " Dengan Jumlah " + getMenuJumlah() + " dikenakan harga " + getHarga());
-        System.out.println("Subtotal: Rp " + hitungSubtotal());
-        System.out.println("----------------------------------------");
+        System.out.println("Type     : " + this.type);
+        System.out.println("ID Menu  : " + getIdMenu());
+        System.out.println("Nama     : " + getNamaMenu()); // Cetak nama menu
+        System.out.println("Harga    : Rp " + getHarga());
     }
 }
